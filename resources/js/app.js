@@ -26,17 +26,31 @@ require('./bootstrap');
 
 import router from './routes';
 import VueRouter from "vue-router";
+import Index from "./index";
 
 window.Vue = require('vue').default;
 
-Vue.component(
-    'example-component',
-     require('./components/ExampleComponent.vue').default
-);
+// NOTE: We don't need to register it here, the router already
+//       regiter all components.
+// REGISTER GLOBAL COMPONENTS LOCALLY : EXAMPLE
+// Vue.component(
+//     'example-component',
+//      require('./components/ExampleComponent.vue').default
+// );
+
+// Vue.component(
+//     'exampletwo-component',
+//      require('./components/Example2.vue').default
+// );
 
 Vue.use(VueRouter);
 
+// NOTE : As you can see, router import use here to access
+//        route and components from routes.js
 const app = new Vue({
     el: '#app',
-    router
+    router,
+    components :{
+        'index' : Index,
+    }
 });
