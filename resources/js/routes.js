@@ -4,6 +4,7 @@
 import VueRouter from "vue-router";
 import ExampleComponent from "./components/ExampleComponent";
 import Example2Component from "./components/Example2";
+import practice1 from "./components/practice1";
 
 // EACH ARRAY/OBJECTS CONTAINS 2 PARAMETERS 
 
@@ -17,6 +18,11 @@ const routes = [
         path: "/second",
         component:Example2Component,
         name: "second"
+    },
+    {
+        path: "/test1",
+        component:practice1,
+        name: "test1"
     },
 ];
 
