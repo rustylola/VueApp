@@ -11,6 +11,8 @@
         <!-- Bootstrap Compiled File -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <!-- Styles -->
+
+        <!-- app vue js -->
         <script src="{{ asset('js/app.js') }}" defer></script>
 
     </head>
