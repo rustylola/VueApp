@@ -5256,7 +5256,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _components_ExampleComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/ExampleComponent */ "./resources/js/components/ExampleComponent.vue");
 /* harmony import */ var _components_Example2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Example2 */ "./resources/js/components/Example2.vue");
-// vue-router@3 --legact-peer-deps 
+// vue-router@3 --legacy-peer-deps 
 
 
 

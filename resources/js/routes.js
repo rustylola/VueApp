@@ -1,6 +1,6 @@
 
 
-// vue-router@3 --legact-peer-deps 
+// vue-router@3 --legacy-peer-deps 
 import VueRouter from "vue-router";
 import ExampleComponent from "./components/ExampleComponent";
 import Example2Component from "./components/Example2";
