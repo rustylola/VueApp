@@ -7,10 +7,9 @@
 
         <nav class="navbar bg-white border-bottom navbar-light">
             <div class="container-fluid">
-                <router-link class="navbar-brand " v-bind:to="{name:'home'}">QApp</router-link>
+                <router-link class="navbar-brand " v-bind:to="{name:'Bookables'}">QBookApp</router-link>
                 <div class="navbar">
-                    <router-link class="btn navbar-button" :to="{name:'second'}">Second</router-link>
-                    <router-link class="btn navbar-button" :to="{name:'test1'}">Practice1</router-link>
+                    <router-link class="btn navbar-button" :to="{name:'BookableList'}">Book List</router-link>
                 </div>
             </div>
         </nav>

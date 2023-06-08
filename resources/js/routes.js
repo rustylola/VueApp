@@ -8,21 +8,36 @@ import practice1 from "./components/practice1";
 
 // EACH ARRAY/OBJECTS CONTAINS 2 PARAMETERS 
 
+// BOOKABLES START
+import Bookables from "./bookables/Bookables";
+import BookablesListItems from "./bookables/BookablesListItems";
+
 const routes = [
+    // EXAMPLES
+    // {
+    //     path: "/",
+    //     component:ExampleComponent,
+    //     name: "home"
+    // },
+    // {
+    //     path: "/second",
+    //     component:Example2Component,
+    //     name: "second"
+    // },
+    // {
+    //     path: "/test1",
+    //     component:practice1,
+    //     name: "test1"
+    // },
     {
         path: "/",
-        component:ExampleComponent,
-        name: "home"
+        component: Bookables,
+        name: "Bookables",
     },
     {
-        path: "/second",
-        component:Example2Component,
-        name: "second"
-    },
-    {
-        path: "/test1",
-        component:practice1,
-        name: "test1"
+        path: "/BookableListItems",
+        component: BookablesListItems,
+        name: "BookableList",
     },
 ];
 

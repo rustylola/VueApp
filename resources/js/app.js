@@ -32,7 +32,8 @@ window.Vue = require('vue').default;
 
 // NOTE: We don't need to register it here, the router already
 //       regiter all components.
-// REGISTER GLOBAL COMPONENTS LOCALLY : EXAMPLE
+// REGISTER GLOBAL COMPONENTS  : EXAMPLE
+// CAN USE EVERYWHERE
 // Vue.component(
 //     'example-component',
 //      require('./components/ExampleComponent.vue').default

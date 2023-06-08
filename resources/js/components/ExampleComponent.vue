@@ -21,3 +21,11 @@
         }
     }
 </script>
+
+<!-- Scoped Property -->
+<!-- This allows you to add style only affects within the template above -->
+<style scoped>
+    .card-body{
+        color:yellow;
+    }
+</style>
