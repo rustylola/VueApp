@@ -17,5 +17,9 @@
         <div class="container mt-2 mb-2">
             <router-view></router-view>
         </div>
+        
+        <!-- INITIALIZE VIA GLOBAL COMPONENTS -->
+        <!-- PUT v-bind: or : for shorthand to preserve the value you passing -->
+        <practice-test item-title="test" item-content="test" :price="3000"></practice-test>
     </div>
 </template>

@@ -44,6 +44,12 @@ window.Vue = require('vue').default;
 //      require('./components/Example2.vue').default
 // );
 
+// INITIALIZE COMPONENTS GLOBALLY
+Vue.component(
+    'practice-test',
+     require('./components/practice1').default
+);
+
 Vue.use(VueRouter);
 
 // NOTE : As you can see, router import use here to access

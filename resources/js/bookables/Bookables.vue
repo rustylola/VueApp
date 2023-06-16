@@ -14,6 +14,9 @@
         <bookables-list-items item-title="second title" item-content="second content" :price="200"></bookables-list-items>
         <bookables-list-items item-title="third title" item-content="third content" :price="300"></bookables-list-items>
         
+        <!-- INITIALIZE VIA GLOBAL COMPONENTS -->
+        <!-- <practice-test></practice-test> -->
+
     </div>
 </template>
 
@@ -27,13 +30,14 @@ export default {
     // <bookables-list-items>
     // "Bookable-list-item" : BookablesListItems,
 
-    // CAMEL CASE / PASCAL CASE
+    // CAMEL CASE / PASCAL CASE SHORT HAND JS ES6
     // Note : Can use both type of display
     // <bookables-list-items> AND <BookablesListItems>
     // Link : https://vuejs.org/guide/essentials/component-basics.html#using-a-component
     components:{
         // CAMEL CASE - SHORT HAND JS ES6
         // BookablesListItems,
+
         // KEBAB CASE : can rename 
         "bookables-list-items" : BookablesListItems,
     }

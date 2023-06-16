@@ -6,7 +6,8 @@ import ExampleComponent from "./components/ExampleComponent";
 import Example2Component from "./components/Example2";
 import practice1 from "./components/practice1";
 
-// EACH ARRAY/OBJECTS CONTAINS 2 PARAMETERS 
+// EACH ARRAY/OBJECTS CONTAINS PARAMETERS 
+// DECLARING COMPONENTS GLOBALLY
 
 // BOOKABLES START
 import Bookables from "./bookables/Bookables";

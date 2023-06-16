@@ -5095,6 +5095,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 // INITIALIZE COMPONENTS IN A SINGLE FILE
 
@@ -5104,13 +5107,14 @@ __webpack_require__.r(__webpack_exports__);
   // <bookables-list-items>
   // "Bookable-list-item" : BookablesListItems,
 
-  // CAMEL CASE / PASCAL CASE
+  // CAMEL CASE / PASCAL CASE SHORT HAND JS ES6
   // Note : Can use both type of display
   // <bookables-list-items> AND <BookablesListItems>
   // Link : https://vuejs.org/guide/essentials/component-basics.html#using-a-component
   components: {
     // CAMEL CASE - SHORT HAND JS ES6
     // BookablesListItems,
+
     // KEBAB CASE : can rename 
     "bookables-list-items": _BookablesListItems__WEBPACK_IMPORTED_MODULE_0__["default"]
   }
@@ -5252,8 +5256,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  // Similarly as document.ready, in Vue.js, the mounted lifecycle hook is a function that is called 
+  // automatically by Vue.js once the component has been mounted to the DOM. It 
+  // indicates that the component's template has been rendered and added to the DOM, 
+  // and it's safe to access and manipulate the component's elements.
+  // Link : https://vuejs.org/api/options-lifecycle.html#mounted
   mounted: function mounted() {
     console.log('Component mounted.');
+    console.log(this.price);
+    // Modifiying the data from props will cause an error, it will suggest to modify using 'Data' properties
+    // this.price = '4000';
+  },
+
+  props: {
+    'itemTitle': String,
+    'itemContent': String,
+    'price': Number
   }
 });
 
@@ -5313,6 +5331,8 @@ window.Vue = (__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js
 //      require('./components/Example2.vue').default
 // );
 
+// INITIALIZE COMPONENTS GLOBALLY
+Vue.component('practice-test', (__webpack_require__(/*! ./components/practice1 */ "./resources/js/components/practice1.vue")["default"]));
 Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_2__["default"]);
 
 // NOTE : As you can see, router import use here to access
@@ -5389,7 +5409,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// EACH ARRAY/OBJECTS CONTAINS 2 PARAMETERS 
+// EACH ARRAY/OBJECTS CONTAINS PARAMETERS 
+// DECLARING COMPONENTS GLOBALLY
 
 // BOOKABLES START
 
@@ -29183,32 +29204,27 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-8" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _vm._v("My First practice"),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _vm._v(
-                "\n                    I tried to create own components hehe.\n                "
-              ),
-            ]),
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-md-8" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-header" }, [
+            _vm._v("My First practice"),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _vm._v(
+              "\n                    I tried to create own components hehe. " +
+                _vm._s(_vm.price) +
+                "\n                "
+            ),
           ]),
         ]),
       ]),
-    ])
-  },
-]
+    ]),
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -29231,43 +29247,51 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("nav", { staticClass: "navbar bg-white border-bottom navbar-light" }, [
-      _c(
-        "div",
-        { staticClass: "container-fluid" },
-        [
-          _c(
-            "router-link",
-            {
-              staticClass: "navbar-brand",
-              attrs: { to: { name: "Bookables" } },
-            },
-            [_vm._v("QBookApp")]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "navbar" },
-            [
-              _c(
-                "router-link",
-                {
-                  staticClass: "btn navbar-button",
-                  attrs: { to: { name: "BookableList" } },
-                },
-                [_vm._v("Book List")]
-              ),
-            ],
-            1
-          ),
-        ],
-        1
-      ),
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "container mt-2 mb-2" }, [_c("router-view")], 1),
-  ])
+  return _c(
+    "div",
+    [
+      _c("nav", { staticClass: "navbar bg-white border-bottom navbar-light" }, [
+        _c(
+          "div",
+          { staticClass: "container-fluid" },
+          [
+            _c(
+              "router-link",
+              {
+                staticClass: "navbar-brand",
+                attrs: { to: { name: "Bookables" } },
+              },
+              [_vm._v("QBookApp")]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "navbar" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "btn navbar-button",
+                    attrs: { to: { name: "BookableList" } },
+                  },
+                  [_vm._v("Book List")]
+                ),
+              ],
+              1
+            ),
+          ],
+          1
+        ),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "container mt-2 mb-2" }, [_c("router-view")], 1),
+      _vm._v(" "),
+      _c("practice-test", {
+        attrs: { "item-title": "test", "item-content": "test", price: 3000 },
+      }),
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
