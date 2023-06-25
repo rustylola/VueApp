@@ -5098,6 +5098,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 // INITIALIZE COMPONENTS IN A SINGLE FILE
 
@@ -5117,6 +5118,32 @@ __webpack_require__.r(__webpack_exports__);
 
     // KEBAB CASE : can rename 
     "bookables-list-items": _BookablesListItems__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  // VUE Life cycle hooks
+  // Link : https://vuejs.org/guide/essentials/lifecycle.html#lifecycle-diagram
+  beforeCreate: function beforeCreate() {
+    console.log('before created');
+  },
+  created: function created() {
+    console.log('created');
+  },
+  beforeMount: function beforeMount() {
+    console.log('before mount');
+  },
+  mounted: function mounted() {
+    console.log('mounted');
+  },
+  beforeUpdate: function beforeUpdate() {
+    console.log('before update');
+  },
+  updated: function updated() {
+    console.log('update');
+  },
+  beforeDestroy: function beforeDestroy() {
+    console.log('before destroy');
+  },
+  destroyed: function destroyed() {
+    console.log('destroyed');
   }
 });
 
@@ -5150,7 +5177,11 @@ __webpack_require__.r(__webpack_exports__);
     'itemTitle': String,
     'itemContent': String,
     'price': Number
-  } // (Prop object with datatype)
+  },
+  // (Prop object with datatype)
+  mounted: function mounted() {
+    console.log(this.itemTitle);
+  }
 });
 
 /***/ }),

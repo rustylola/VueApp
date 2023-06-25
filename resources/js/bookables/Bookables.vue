@@ -10,6 +10,7 @@
         <!-- Link : https://vuejs.org/guide/essentials/component-basics.html#passing-props -->
         
         <!-- Use v-bind to preserve datatype by passing the value -->
+        <!-- Note: declaring props is a 'One-way data flow' which means it is a read-only data or a data has ability to pass to child property -->
         <bookables-list-items item-title="first title" item-content="first content" v-bind:price="100"></bookables-list-items> 
         <bookables-list-items item-title="second title" item-content="second content" :price="200"></bookables-list-items>
         <bookables-list-items item-title="third title" item-content="third content" :price="300"></bookables-list-items>
@@ -40,6 +41,34 @@ export default {
 
         // KEBAB CASE : can rename 
         "bookables-list-items" : BookablesListItems,
+    },
+    // VUE Life cycle hooks
+    // Link : https://vuejs.org/guide/essentials/lifecycle.html#lifecycle-diagram
+    beforeCreate(){
+        console.log('before created');
+    },
+    created(){
+        console.log('created');
+    },
+    beforeMount(){
+        console.log('before mount');
+    },
+    mounted(){
+        console.log('mounted');
+    },
+    beforeUpdate(){
+        console.log('before update');
+    },
+    updated(){
+        console.log('update');
+    },
+    beforeDestroy(){
+        console.log('before destroy');
+    },
+    destroyed(){
+        console.log('destroyed');
     }
+
+    
 }
 </script>
