@@ -5099,6 +5099,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 // INITIALIZE COMPONENTS IN A SINGLE FILE
 
@@ -5119,33 +5127,91 @@ __webpack_require__.r(__webpack_exports__);
     // KEBAB CASE : can rename 
     "bookables-list-items": _BookablesListItems__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
+  data: function data() {
+    return {
+      // bookables1:{
+      //     title:'book 1',
+      //     content: 'english 1',
+      // },
+      // bookables2:{
+      //     title:'book 2',
+      //     content: 'Math 1',
+      // },
+      bookables1: null,
+      bookables2: null
+    };
+  },
   // VUE Life cycle hooks
   // Link : https://vuejs.org/guide/essentials/lifecycle.html#lifecycle-diagram
-  beforeCreate: function beforeCreate() {
-    console.log('before created');
-  },
+  // beforeCreate(){
+  //     console.log('before created');
+  // },
   created: function created() {
+    var _this = this;
     console.log('created');
-  },
-  beforeMount: function beforeMount() {
-    console.log('before mount');
-  },
-  mounted: function mounted() {
-    console.log('mounted');
-  },
-  beforeUpdate: function beforeUpdate() {
-    console.log('before update');
-  },
-  updated: function updated() {
-    console.log('update');
-  },
-  beforeDestroy: function beforeDestroy() {
-    console.log('before destroy');
-  },
-  destroyed: function destroyed() {
-    console.log('destroyed');
-  }
+    console.log(this.bookables1);
+    console.log(this.bookables2);
+
+    // Example: fetching data from the server in the form of settime out
+    // bookables3 nad its component is with component that are reactive that made it the component (child) reload/render
+    setTimeout(function () {
+      // this.bookables1.title = 'Modify Book 1';
+      // this.bookables2.title = 'Modify Book 2';
+      console.log('first Change');
+      _this.bookables1 = {
+        title: 'book 1',
+        content: 'english 1'
+      };
+      _this.bookables2 = {
+        title: 'book 2',
+        content: 'Math 1'
+      };
+      _this.bookables3 = {
+        title: 'book 3',
+        content: 'Science 1'
+      };
+    }, 5000);
+    setTimeout(function () {
+      console.log('Second Change ');
+      _this.bookables2 = {
+        title: 'Modify book 2',
+        content: 'Math 1'
+      };
+    }, 8000);
+
+    // bookables3 and its component is not with component that are reactive
+    // in order to reflect this changes, always declare the object inside data(method)
+    setTimeout(function () {
+      console.log('third Change ');
+      _this.bookables3 = {
+        title: 'Modify book 3',
+        content: 'Science 1'
+      };
+    }, 12000);
+  } // beforeMount(){
+  //     console.log('before mount');
+  // },
+  // mounted(){
+  //     console.log('mounted');
+  // },
+  // beforeUpdate(){
+  //     console.log('before update');
+  // },
+  // updated(){
+  //     console.log('update');
+  // },
+  // beforeDestroy(){
+  //     console.log('before destroy');
+  // },
+  // destroyed(){
+  //     console.log('destroyed');
+  // }
 });
+
+// Note: 
+// the difference between function() and arrow function is the accessibility of data 
+// function can access the data by putting it in parameters Ex. function test(this.bookables1,this.bookables2)
+// unlike from arrow function, you can actually access it without putting it on parameters
 
 /***/ }),
 
@@ -29062,16 +29128,24 @@ var render = function () {
     [
       _c("bookables-list-items", {
         attrs: {
-          "item-title": "first title",
-          "item-content": "first content",
+          "item-title": _vm.bookables1.title,
+          "item-content": _vm.bookables1.content,
           price: 100,
         },
       }),
       _vm._v(" "),
       _c("bookables-list-items", {
         attrs: {
-          "item-title": "second title",
-          "item-content": "second content",
+          "item-title": _vm.bookables2.title,
+          "item-content": _vm.bookables2.content,
+          price: 200,
+        },
+      }),
+      _vm._v(" "),
+      _c("bookables-list-items", {
+        attrs: {
+          "item-title": _vm.bookables3.title,
+          "item-content": _vm.bookables3.content,
           price: 200,
         },
       }),
