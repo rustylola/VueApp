@@ -5107,6 +5107,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 // INITIALIZE COMPONENTS IN A SINGLE FILE
 
@@ -5129,66 +5155,71 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      // bookables1:{
-      //     title:'book 1',
-      //     content: 'english 1',
-      // },
-      // bookables2:{
-      //     title:'book 2',
-      //     content: 'Math 1',
-      // },
-      bookables1: null,
-      bookables2: null
+      bookables: null,
+      loading: false
     };
   },
-  // VUE Life cycle hooks
+  created: function created() {
+    var _this = this;
+    this.loading = true;
+    setTimeout(function () {
+      _this.bookables = [{
+        id: 1,
+        title: 'book 1',
+        content: 'english 1'
+      }, {
+        id: 2,
+        title: 'book 2',
+        content: 'Math 1'
+      }];
+      _this.loading = false;
+    }, 5000);
+  } // VUE Life cycle hooks
   // Link : https://vuejs.org/guide/essentials/lifecycle.html#lifecycle-diagram
   // beforeCreate(){
   //     console.log('before created');
   // },
-  created: function created() {
-    var _this = this;
-    console.log('created');
-    console.log(this.bookables1);
-    console.log(this.bookables2);
-
-    // Example: fetching data from the server in the form of settime out
-    // bookables3 nad its component is with component that are reactive that made it the component (child) reload/render
-    setTimeout(function () {
-      // this.bookables1.title = 'Modify Book 1';
-      // this.bookables2.title = 'Modify Book 2';
-      console.log('first Change');
-      _this.bookables1 = {
-        title: 'book 1',
-        content: 'english 1'
-      };
-      _this.bookables2 = {
-        title: 'book 2',
-        content: 'Math 1'
-      };
-      _this.bookables3 = {
-        title: 'book 3',
-        content: 'Science 1'
-      };
-    }, 5000);
-    setTimeout(function () {
-      console.log('Second Change ');
-      _this.bookables2 = {
-        title: 'Modify book 2',
-        content: 'Math 1'
-      };
-    }, 8000);
-
-    // bookables3 and its component is not with component that are reactive
-    // in order to reflect this changes, always declare the object inside data(method)
-    setTimeout(function () {
-      console.log('third Change ');
-      _this.bookables3 = {
-        title: 'Modify book 3',
-        content: 'Science 1'
-      };
-    }, 12000);
-  } // beforeMount(){
+  // created(){
+  //     console.log('created');
+  //     console.log(this.bookables1);
+  //     console.log(this.bookables2);
+  //     // Example: fetching data from the server in the form of settime out
+  //     // bookables3 nad its component is with component that are reactive that made it the component (child) reload/render
+  //     setTimeout(() => {
+  //         // this.bookables1.title = 'Modify Book 1';
+  //         // this.bookables2.title = 'Modify Book 2';
+  //         console.log('first Change');
+  //         this.bookables1 = {
+  //             title:'book 1',
+  //             content: 'english 1',
+  //         };
+  //         this.bookables2 = {
+  //             title:'book 2',
+  //             content: 'Math 1',
+  //         };
+  //         this.bookables3 = {
+  //             title:'book 3',
+  //             content: 'Science 1',
+  //         };
+  //     }, 5000);
+  //     setTimeout(() => {
+  //         console.log('Second Change ');
+  //         this.bookables2 = {
+  //             title:'Modify book 2',
+  //             content: 'Math 1',
+  //         };
+  //     }, 8000);
+  //     // bookables3 and its component is not with component that are reactive
+  //     // in order to reflect this changes, always declare the object inside data(method)
+  //     setTimeout(() => {
+  //         console.log('third Change ');
+  //         this.bookables3 = {
+  //             title:'Modify book 3',
+  //             content: 'Science 1',
+  //         };
+  //     }, 12000);
+  // },
+  // beforeMount(){
   //     console.log('before mount');
   // },
   // mounted(){
@@ -29126,29 +29157,22 @@ var render = function () {
   return _c(
     "div",
     [
-      _c("bookables-list-items", {
-        attrs: {
-          "item-title": _vm.bookables1.title,
-          "item-content": _vm.bookables1.content,
-          price: 100,
-        },
-      }),
-      _vm._v(" "),
-      _c("bookables-list-items", {
-        attrs: {
-          "item-title": _vm.bookables2.title,
-          "item-content": _vm.bookables2.content,
-          price: 200,
-        },
-      }),
-      _vm._v(" "),
-      _c("bookables-list-items", {
-        attrs: {
-          "item-title": _vm.bookables3.title,
-          "item-content": _vm.bookables3.content,
-          price: 200,
-        },
-      }),
+      _vm.loading
+        ? _c("div", [_c("h1", [_vm._v("Data is Loading ...")])])
+        : _c(
+            "div",
+            _vm._l(_vm.bookables, function (bookable, index) {
+              return _c("bookables-list-items", {
+                key: index,
+                attrs: {
+                  "item-title": bookable.title,
+                  "item-content": bookable.content,
+                  price: 200,
+                },
+              })
+            }),
+            1
+          ),
       _vm._v(" "),
       _c("bookables-list-items", {
         attrs: {
