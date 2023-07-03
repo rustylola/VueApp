@@ -5156,8 +5156,15 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       bookables: null,
-      loading: false
+      loading: false,
+      column: 3
     };
+  },
+  // [2]
+  computed: {
+    rows: function rows() {
+      return this.bookables == null ? 0 : Math.ceil(this.bookables.length / this.column);
+    }
   },
   created: function created() {
     var _this = this;
@@ -5166,11 +5173,31 @@ __webpack_require__.r(__webpack_exports__);
       _this.bookables = [{
         id: 1,
         title: 'book 1',
-        content: 'english 1'
+        content: 'English 1'
       }, {
         id: 2,
         title: 'book 2',
         content: 'Math 1'
+      }, {
+        id: 3,
+        title: 'book 3',
+        content: 'Science 1'
+      }, {
+        id: 4,
+        title: 'book 4',
+        content: 'Filipino 1'
+      }, {
+        id: 5,
+        title: 'book 5',
+        content: 'Arts 1'
+      }, {
+        id: 6,
+        title: 'book 6',
+        content: 'Math 1'
+      }, {
+        id: 7,
+        title: 'book 7',
+        content: 'Logic 1'
       }];
       _this.loading = false;
     }, 5000);
@@ -5209,6 +5236,7 @@ __webpack_require__.r(__webpack_exports__);
   //             content: 'Math 1',
   //         };
   //     }, 8000);
+  //     [1]
   //     // bookables3 and its component is not with component that are reactive
   //     // in order to reflect this changes, always declare the object inside data(method)
   //     setTimeout(() => {
@@ -5239,10 +5267,24 @@ __webpack_require__.r(__webpack_exports__);
   // }
 });
 
+// [1]
 // Note: 
 // the difference between function() and arrow function is the accessibility of data 
 // function can access the data by putting it in parameters Ex. function test(this.bookables1,this.bookables2)
 // unlike from arrow function, you can actually access it without putting it on parameters
+
+// [2]
+// Computed Properties 
+// Short Explain:
+// Computed Properties:
+// Computed properties are properties that are calculated based on the values of other properties in the component. 
+// They are defined using the computed property in a Vue component. Computed properties are cached and only recalculated 
+// when their dependencies change. This caching mechanism helps improve performance by avoiding unnecessary recalculations.
+// Computed properties are useful when you have data that depends on other data and needs to be recalculated whenever 
+// the dependencies change. For example, if you have two data properties a and b, and you want to calculate their sum, you 
+// can define a computed property that returns the sum of a and b. Whenever a or b changes, the computed property will be 
+// automatically updated.
+// Link: https://v2.vuejs.org/v2/guide/computed.html#Computed-Caching-vs-Methods
 
 /***/ }),
 
@@ -5266,6 +5308,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   // PROPS - passing data from parent component which is bookables.vue
@@ -5274,11 +5323,10 @@ __webpack_require__.r(__webpack_exports__);
     'itemTitle': String,
     'itemContent': String,
     'price': Number
-  },
-  // (Prop object with datatype)
-  mounted: function mounted() {
-    console.log(this.itemTitle);
-  }
+  } // (Prop object with datatype)
+  // mounted(){
+  //     console.log(this.itemTitle);
+  // },
 });
 
 /***/ }),
@@ -29154,36 +29202,25 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _vm.loading
-        ? _c("div", [_c("h1", [_vm._v("Data is Loading ...")])])
-        : _c(
-            "div",
-            _vm._l(_vm.bookables, function (bookable, index) {
-              return _c("bookables-list-items", {
-                key: index,
-                attrs: {
-                  "item-title": bookable.title,
-                  "item-content": bookable.content,
-                  price: 200,
-                },
-              })
-            }),
-            1
-          ),
-      _vm._v(" "),
-      _c("bookables-list-items", {
-        attrs: {
-          "item-title": "third title",
-          "item-content": "third content",
-          price: 300,
-        },
-      }),
-    ],
-    1
-  )
+  return _c("div", [
+    _vm._v("\n    Row : " + _vm._s(_vm.rows) + "\n    "),
+    _vm.loading
+      ? _c("div", [_c("h1", [_vm._v("Data is Loading ...")])])
+      : _c(
+          "div",
+          _vm._l(_vm.bookables, function (bookable, index) {
+            return _c("bookables-list-items", {
+              key: index,
+              attrs: {
+                "item-title": bookable.title,
+                "item-content": bookable.content,
+                price: 200,
+              },
+            })
+          }),
+          1
+        ),
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -29209,9 +29246,17 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h1", [_vm._v(_vm._s(_vm.itemTitle))]),
-    _vm._v(" "),
-    _c("p", [_vm._v(_vm._s(_vm.itemContent) + " ")]),
+    _c("div", { staticClass: "card m-1" }, [
+      _c("div", { staticClass: "card-body" }, [
+        _c("div", { staticClass: "card-title" }, [
+          _vm._v(_vm._s(_vm.itemTitle)),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-text" }, [
+          _vm._v(_vm._s(_vm.itemContent)),
+        ]),
+      ]),
+    ]),
   ])
 }
 var staticRenderFns = []
@@ -29376,51 +29421,43 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("nav", { staticClass: "navbar bg-white border-bottom navbar-light" }, [
-        _c(
-          "div",
-          { staticClass: "container-fluid" },
-          [
-            _c(
-              "router-link",
-              {
-                staticClass: "navbar-brand",
-                attrs: { to: { name: "Bookables" } },
-              },
-              [_vm._v("QBookApp")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "navbar" },
-              [
-                _c(
-                  "router-link",
-                  {
-                    staticClass: "btn navbar-button",
-                    attrs: { to: { name: "BookableList" } },
-                  },
-                  [_vm._v("Book List")]
-                ),
-              ],
-              1
-            ),
-          ],
-          1
-        ),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "container mt-2 mb-2" }, [_c("router-view")], 1),
-      _vm._v(" "),
-      _c("practice-test", {
-        attrs: { "item-title": "test", "item-content": "test", price: 3000 },
-      }),
-    ],
-    1
-  )
+  return _c("div", [
+    _c("nav", { staticClass: "navbar bg-white border-bottom navbar-light" }, [
+      _c(
+        "div",
+        { staticClass: "container-fluid" },
+        [
+          _c(
+            "router-link",
+            {
+              staticClass: "navbar-brand",
+              attrs: { to: { name: "Bookables" } },
+            },
+            [_vm._v("QBookApp")]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "navbar" },
+            [
+              _c(
+                "router-link",
+                {
+                  staticClass: "btn navbar-button",
+                  attrs: { to: { name: "BookableList" } },
+                },
+                [_vm._v("Book List")]
+              ),
+            ],
+            1
+          ),
+        ],
+        1
+      ),
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "container mt-2 mb-2" }, [_c("router-view")], 1),
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

@@ -31,6 +31,7 @@
             :item-title="bookables1.title" :item-content="bookables1.content" v-bind:price="100"></bookables-list-items>  -->
 
         <!-- List and rendering v-for -->
+        Row : {{ rows }}
         <div v-if="loading">
             <h1>Data is Loading ...</h1>
         </div>
@@ -45,9 +46,8 @@
             </bookables-list-items>
         </div>
         
-        
-       
-        <bookables-list-items item-title="third title" item-content="third content" :price="300"></bookables-list-items>
+    
+        <!-- <bookables-list-items item-title="third title" item-content="third content" :price="300"></bookables-list-items> -->
         
         <!-- INITIALIZE VIA GLOBAL COMPONENTS -->
         <!-- <practice-test></practice-test> -->
@@ -80,30 +80,52 @@ export default {
         return{
             bookables: null,
             loading:false,
+            column:3,
         };
     },
-
-    
+    // [2]
+    computed:{
+        rows(){
+            return this.bookables == null ? 0 : Math.ceil(this.bookables.length/this.column);
+        }
+    },
     created(){
         this.loading = true;
         setTimeout(() => {
             this.bookables = [{
                 id:1,
                 title:'book 1',
-                content: 'english 1',
+                content: 'English 1',
             },{
                 id:2,
                 title:'book 2',
                 content: 'Math 1',
+            },{
+                id:3,
+                title:'book 3',
+                content: 'Science 1',
+            },{
+                id:4,
+                title:'book 4',
+                content: 'Filipino 1',
+            },{
+                id:5,
+                title:'book 5',
+                content: 'Arts 1',
+            },{
+                id:6,
+                title:'book 6',
+                content: 'Math 1',
+            },{
+                id:7,
+                title:'book 7',
+                content: 'Logic 1',
             }];
 
             this.loading = false;
         }, 5000);
         
     },
-    
-
-
 
     // VUE Life cycle hooks
     // Link : https://vuejs.org/guide/essentials/lifecycle.html#lifecycle-diagram
@@ -144,6 +166,7 @@ export default {
     //         };
     //     }, 8000);
 
+    //     [1]
     //     // bookables3 and its component is not with component that are reactive
     //     // in order to reflect this changes, always declare the object inside data(method)
     //     setTimeout(() => {
@@ -174,8 +197,22 @@ export default {
     // }
 }
 
+// [1]
 // Note: 
 // the difference between function() and arrow function is the accessibility of data 
 // function can access the data by putting it in parameters Ex. function test(this.bookables1,this.bookables2)
 // unlike from arrow function, you can actually access it without putting it on parameters
+
+// [2]
+// Computed Properties 
+// Short Explain:
+// Computed Properties:
+// Computed properties are properties that are calculated based on the values of other properties in the component. 
+// They are defined using the computed property in a Vue component. Computed properties are cached and only recalculated 
+// when their dependencies change. This caching mechanism helps improve performance by avoiding unnecessary recalculations.
+// Computed properties are useful when you have data that depends on other data and needs to be recalculated whenever 
+// the dependencies change. For example, if you have two data properties a and b, and you want to calculate their sum, you 
+// can define a computed property that returns the sum of a and b. Whenever a or b changes, the computed property will be 
+// automatically updated.
+// Link: https://v2.vuejs.org/v2/guide/computed.html#Computed-Caching-vs-Methods
 </script>
