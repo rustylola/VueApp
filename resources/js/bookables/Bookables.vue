@@ -31,19 +31,31 @@
             :item-title="bookables1.title" :item-content="bookables1.content" v-bind:price="100"></bookables-list-items>  -->
 
         <!-- List and rendering v-for -->
-        Row : {{ rows }}
+        <!-- Row : {{ rows }} -->
         <div v-if="loading">
             <h1>Data is Loading ...</h1>
         </div>
         <div v-else>
-            <bookables-list-items 
-                :item-title="bookable.title" 
-                :item-content="bookable.content" 
-                :price="200"
-                v-for="(bookable,index) in bookables"
-                :key="index"
-            >
-            </bookables-list-items>
+            <div class="row" v-for="row in rows" :key="'row' + row">
+                <div class="col mb-3" 
+                    v-for="(bookable,column) in bookablesInRow(row)" 
+                    :key="'row'+row+column">
+                    <!-- {{ (row-1) * columns }}  -  {{ row*columns }}  -  {{ column }} -->
+                    <bookables-list-items 
+                        :item-title="bookable.title" 
+                        :item-content="bookable.content" 
+                        :price="200"
+                    >
+                    </bookables-list-items>
+                </div>
+
+                <div class="col mb-3" v-for="p in placeHolder(row) " :key="'placeholder' + row + p">
+
+                </div>
+            </div>
+
+           
+            
         </div>
         
     
@@ -80,13 +92,21 @@ export default {
         return{
             bookables: null,
             loading:false,
-            column:3,
+            columns:5,
         };
     },
     // [2]
     computed:{
         rows(){
-            return this.bookables == null ? 0 : Math.ceil(this.bookables.length/this.column);
+            return this.bookables == null ? 0 : Math.ceil(this.bookables.length/this.columns);
+        }
+    },
+    methods:{
+        bookablesInRow(row){
+            return this.bookables.slice((row-1) * this.columns,row*this.columns);
+        },
+        placeHolder(row){
+            return this.columns - this.bookablesInRow(row).length;
         }
     },
     created(){
@@ -195,6 +215,7 @@ export default {
     // destroyed(){
     //     console.log('destroyed');
     // }
+    
 }
 
 // [1]
